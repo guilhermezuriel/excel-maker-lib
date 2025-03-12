@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.guilhermezuriel</groupId>
-    <artifactId>ExcelMakerLib</artifactId>
+    <artifactId>excel-maker-lib</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,6 +13,13 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub excel-maker-lib Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/guilhermezuriel/excel-maker-lib</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
