@@ -1,9 +1,9 @@
 package com.guilhermezuriel.impl;
 
+import com.guilhermezuriel.annotations.ExcelColumn;
+import com.guilhermezuriel.annotations.ExcelTable;
 import com.guilhermezuriel.base.BaseExcel;
 import com.guilhermezuriel.dtos.StyleExcelTable;
-import com.guilhermezuriel.exceltablemaker.service.excel.impl.excelGenerator.annotations.ExcelColumn;
-import com.guilhermezuriel.exceltablemaker.service.excel.impl.excelGenerator.annotations.ExcelTable;
 import org.apache.poi.xssf.usermodel.*;
 
 

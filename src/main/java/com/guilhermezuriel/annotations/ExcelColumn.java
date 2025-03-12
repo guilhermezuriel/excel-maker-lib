@@ -1,4 +1,4 @@
-package com.guilhermezuriel.exceltablemaker.service.excel.impl.excelGenerator.annotations;
+package com.guilhermezuriel.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
