@@ -21,16 +21,18 @@ public class ExcelGeneratorLocal extends BaseExcel {
      */
     @Override
     public byte[] generateExcelTable(AbstractList<?> data, StyleExcelTable style) throws IOException {
-        validateDataList(data);
-        String fileName = extractSheetNameByAnnotations(data);
-        Set<String> columns = exctractColumnsByAnnotations(data);
+        Class<?> dataClass = data.getFirst().getClass();
+        validateDataList(dataClass);
+        String fileName = extractSheetNameByAnnotations(dataClass);
+        Set<String> columns = exctractColumnsByAnnotations(dataClass);
         return this.createExcelSheet(fileName, data, columns, style);
     }
 
     @Override
     public byte[] generateExcelTable(AbstractList<?> data, String sheetName, StyleExcelTable style) throws IOException {
-        validateDataList(data);
-        Set<String> columns = exctractColumnsByAnnotations(data);
+        Class<?> dataClass = data.getFirst().getClass();
+        validateDataList(dataClass);
+        Set<String> columns = exctractColumnsByAnnotations(dataClass);
         return this.createExcelSheet(sheetName, data, columns, style);
     }
 
@@ -47,30 +49,21 @@ public class ExcelGeneratorLocal extends BaseExcel {
         }
     }
 
-    private void validateDataList(AbstractList<?> data) {
-        if (data.isEmpty()) {
-            throw new RuntimeException();
-        }
-        Object first = data.getFirst();
-        boolean instance = first instanceof Class<?>;
-        if(!instance) {
-            throw new IllegalArgumentException("Data is not a class");
-        }
-        Class<?> aClass = first.getClass();
+    private void validateDataList(Class<?> aClass) {
         if (aClass.getAnnotation(ExcelTable.class) == null) {
             throw new RuntimeException("Could not create excel sheet, the class is not meant to be processed. Data is not annotated with @ExcelTable");
         }
     }
 
 
-    private String extractSheetNameByAnnotations(Object object) {
-        String nomePlanilha = object.getClass().getAnnotation(ExcelTable.class).name();
-        if (nomePlanilha == null || nomePlanilha.isEmpty()) return object.getClass().getSimpleName();
-        return nomePlanilha;
+    private String extractSheetNameByAnnotations(Class<?> aClass) {
+        String sheetName = aClass.getAnnotation(ExcelTable.class).name();
+        if (sheetName == null || sheetName.isEmpty()) return aClass.getSimpleName();
+        return sheetName;
     }
 
-    private Set<String> exctractColumnsByAnnotations(Object object) {
-        Field[] fields = object.getClass().getDeclaredFields();
+    private Set<String> exctractColumnsByAnnotations(Class<?> aClass) {
+        Field[] fields = aClass.getDeclaredFields();
         Set<String> columns = new HashSet<>();
         for (Field field : fields) {
             Optional<ExcelColumn> annotation = Optional.ofNullable(field.getAnnotation(ExcelColumn.class));
