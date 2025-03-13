@@ -52,7 +52,7 @@ public class ExcelGeneratorLocal extends BaseExcel {
             throw new RuntimeException();
         }
         Object first = data.getFirst();
-        boolean instance = first instanceof Class;
+        boolean instance = first instanceof Class<?>;
         if(!instance) {
             throw new IllegalArgumentException("Data is not a class");
         }
