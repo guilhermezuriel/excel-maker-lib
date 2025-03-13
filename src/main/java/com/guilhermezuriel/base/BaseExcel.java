@@ -52,6 +52,7 @@ public abstract class BaseExcel implements BaseExcelService {
     protected void setDataCellWithSyle(XSSFCellStyle style, XSSFCell cell, Object value) {
         cell.setCellStyle(style);
         switch (value) {
+            case Long l -> cell.setCellValue(l);
             case String s -> cell.setCellValue(s);
             case Integer j -> cell.setCellValue(j);
             case Boolean b -> cell.setCellValue(b);
