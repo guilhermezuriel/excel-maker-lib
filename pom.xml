@@ -6,7 +6,7 @@
 
     <groupId>com.guilhermezuriel</groupId>
     <artifactId>excel-maker-lib</artifactId>
-    <version>4.2.0-SNAPSHOT</version>
+    <version>4.3.0</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
