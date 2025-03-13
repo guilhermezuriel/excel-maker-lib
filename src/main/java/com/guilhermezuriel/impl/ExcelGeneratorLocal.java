@@ -58,7 +58,7 @@ public class ExcelGeneratorLocal extends BaseExcel {
         }
         Class<?> aClass = first.getClass();
         if (aClass.getAnnotation(ExcelTable.class) == null) {
-            throw new RuntimeException("Data is not annotated with @ExcelTable");
+            throw new RuntimeException("Could not create excel sheet, the class is not meant to be processed. Data is not annotated with @ExcelTable");
         }
     }
 
