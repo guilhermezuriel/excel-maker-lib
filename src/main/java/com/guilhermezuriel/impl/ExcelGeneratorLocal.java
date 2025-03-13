@@ -64,7 +64,7 @@ public class ExcelGeneratorLocal extends BaseExcel {
 
     private Set<String> exctractColumnsByAnnotations(Class<?> aClass) {
         Field[] fields = aClass.getDeclaredFields();
-        Set<String> columns = new HashSet<>();
+        Set<String> columns = new LinkedHashSet<>();
         for (Field field : fields) {
             Optional<ExcelColumn> annotation = Optional.ofNullable(field.getAnnotation(ExcelColumn.class));
             if (annotation.isPresent()) {
