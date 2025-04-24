@@ -13,4 +13,5 @@ public interface BaseExcelService {
    void applyDataToSheet(AbstractList<?> data, Set<String> columns, XSSFWorkbook workbook, XSSFSheet sheet, int rowCount, XSSFCellStyle cellStyle);
    byte[] generateExcelTable(AbstractList<?> data, StyleExcelTable style) throws IOException;
    byte[] generateExcelTable(AbstractList<?> data, String sheetName, StyleExcelTable style) throws IOException;
+   byte[] generateExcelTableWithComplexObjects(AbstractList<?> data, String sheetName) throws IOException;
 }

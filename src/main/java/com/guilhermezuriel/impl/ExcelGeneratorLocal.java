@@ -37,6 +37,11 @@ public class ExcelGeneratorLocal extends BaseExcel {
     }
 
     @Override
+    public byte[] generateExcelTableWithComplexObjects(AbstractList<?> data, String sheetName) throws IOException {
+        return new byte[0];
+    }
+
+    @Override
     public void applyDataToSheet(AbstractList<?> data, Set<String> columns, XSSFWorkbook workbook, XSSFSheet sheet, int rowCount, XSSFCellStyle style)  {
         Field[] fields = Arrays.stream(data.getFirst().getClass().getDeclaredFields()).filter(field -> field.isAnnotationPresent(ExcelColumn.class)).toArray(Field[]::new);
         for (Object object : data) {

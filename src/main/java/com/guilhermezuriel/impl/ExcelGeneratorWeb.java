@@ -27,6 +27,11 @@ public class ExcelGeneratorWeb extends BaseExcel {
     }
 
     @Override
+    public byte[] generateExcelTableWithComplexObjects(AbstractList<?> data, String sheetName) throws IOException {
+        return new byte[0];
+    }
+
+    @Override
     public byte[] generateExcelTable(AbstractList<?> data, StyleExcelTable style) throws IOException {
         String name = UUID.randomUUID().toString();
         return generateExcelTable(data, name, style);
